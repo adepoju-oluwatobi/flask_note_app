@@ -1,0 +1,61 @@
+{% extends 'base.html' %} 
+{% block title %} Home {% endblock title %} 
+
+{% block content %}
+<!--Welcome User-->
+<div class="welcome-user">
+  <p>Welcome, <span class="user-name">{{ user.name }}</span> 👋</p>
+  <h5><i>What will you like to create today?</i></h5>
+  <h6><i id="created-on">{{user.created_on}}</i></h6>
+</div>
+<!--End welcome user-->
+
+<!--Add note form-->
+<form method="POST">
+  <div class="form-items">
+    <div>
+      <label for="title">Title</label><br />
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Enter note title"
+      />
+    </div>
+    <div>
+      <label for="note">Note</label><br />
+      <textarea
+        name="note"
+        id="note"
+        placeholder="Enter your note here"
+      ></textarea>
+    </div>
+    <button type="submit">Add Note</button>
+  </div>
+</form>
+<!--End of add note form-->
+
+<!--Display note-->
+<div class="note-container">
+  <h3>Notes</h3>
+  <ul class="note">
+    {% if user.notes %} {% for note in user.notes %}
+    <li class="items">
+      <strong class="title">{{ note.title }}</strong> <br />
+      <h6 class="note-text">{{ note.note }}</h6>
+      <div class="action">
+        <p class="edit" onClick="editNote({{ note.id }})">Edit</p>
+        <p class="delete" onClick="deleteNote({{ note.id }})">Delete</p>
+      </div>
+    </li>
+    {% endfor %} {% else %}
+    <p>No Note Available</p>
+    {% endif %}
+  </ul>
+</div>
+<!--End of display note-->
+
+<!--Scripts-->
+<script src="{{ url_for('static', filename='scripts/format-date.js') }}"></script>
+<!--End of scripts-->
+{% endblock content %}

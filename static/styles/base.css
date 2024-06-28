@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    display: block;
+}
+
+.header {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+header .site-title {
+    font-weight: bold;
+}
+
+header .navbar .nav-items {
+    display: flex;
+    gap: 10px;
+}
+
+header .navbar .nav-items a {
+    text-decoration: none;
+    font-size: 13px;
+    color: white;
+}
+
+section.main {
+    padding: 10px;
+    width: 280px;
+    margin: 0 auto;
+}
+
+.alert+.main {
+    margin-top: 20%;
+}
+
+.alert {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: opacity 1s ease;
+}
+
+.alert.hidden {
+    opacity: 0;
+}
+
+.error.alert {
+    background-color: rgb(243, 178, 178);
+    color: rgb(154, 91, 91);
+}
+
+.success.alert {
+    background-color: rgb(169, 255, 169);
+    color: rgb(73, 134, 73);
+}
+
+/* Style for the container div */
+note-container {
+    margin: 20px 20px;
+}
+
+/* Style for the Notes heading */
+h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Style for the list of notes */
+ul.note {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Style for individual note items */
+li.items {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+strong.title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+h6.note-text {
+    color: #666;
+    margin-top: 5px;
+}
+
+.note .title {
+    text-transform: capitalize;
+}
+
+.action {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.action p {
+    color: white;
+    background: black;
+    padding: 5px;
+    font-size: 13px;
+    width: 50px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.welcome-user {
+    text-align: center;
+    margin-top: 15%;
+}
+
+.user-name {
+    font-weight: bold;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    background-color: #f9f9f9;
+    padding: 10px 0;
+}
+
+.footer a {
+    color: black;
+}

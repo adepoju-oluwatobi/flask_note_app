@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/base.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/form.css') }}"
+    />
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{% block title %} {% endblock %}</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <!--Site Header Navigation-->
+    <header>
+      <div class="header">
+        <p class="site-title">Note App</p>
+        <nav class="">
+          <div class="navbar" id="navbar">
+            <div class="nav-items">
+              {% if user.is_authenticated %}
+              <a class="nav-link" id="home" href="/">Dashboard</a>
+              <a class="nav-link" id="logout" href="/logout">Logout</a>
+              {% else %}
+              <a class="nav-link" id="login" href="/user_login">Login</a>
+              <a class="nav-link" id="signUp" href="/user_signup">Sign-up</a>
+              {% endif %}
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!--Flash Messages-->
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %} {% if category ==
+      'error' %}
+      <div class="error alert" id="alert">
+        {{ message }}
+        <span id="close-btn" class="close-btn">&times;</span>
+      </div>
+      {% else %}
+      <div class="success alert" id="alert">
+        {{ message }}
+        <span id="close-btn" class="close-btn">&times;</span>
+      </div>
+      {% endif %} {% endfor %} {% endif %} {% endwith %}
+      <!--End of flash messages-->
+    </header>
+    <!--End of Site header navigation-->
+
+    <!--content of the website-->
+    <section class="main">{% block content %} {% endblock content %}</section>
+    <!--end of content-->
+
+    <!--Footer-->
+    <p class="footer">
+      Developed by <a href="#">Adepoju Oluwatobi</a>
+    </p>
+    <!--End of footer-->
+
+      <!-- Link TO JavaScript file using url_for -->
+      <script src="{{ url_for('static', filename='scripts/close-alert.js') }}"></script>
+      <script src="{{ url_for('static', filename='scripts/delete-note.js') }}"></script>
+      <script src="{{ url_for('static', filename='scripts/edit-note.js') }}"></script>
+      <!--END OF LINK TO JAVASCRIPT FILE-->
+  </body>
+</html>
